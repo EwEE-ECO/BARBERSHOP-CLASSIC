@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Scissors, Menu, X, Phone } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_HREF, bookingLinkProps } from "../config";
 
@@ -41,8 +41,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const active = useActiveSection(sectionIds);
 
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -149,11 +147,6 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-[2px] bg-dark-900 origin-left"
-        style={{ scaleX: progress, opacity: scrolled ? 1 : 0 }}
-      />
 
       <AnimatePresence>
         {mobileOpen && (
