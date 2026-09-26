@@ -1,4 +1,17 @@
-import { Scissors, Phone, MapPin, Calendar, ArrowUpRight, Send } from "lucide-react";
+import { Scissors, Phone, MapPin, Calendar, ArrowUpRight, Send, Clock } from "lucide-react";
+import {
+  ADDRESS,
+  HOURS,
+  MAPS_URL,
+  MAX_URL,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  PRIVACY_HASH,
+  TELEGRAM_HANDLE,
+  TELEGRAM_URL,
+  bookingLinkProps,
+  externalLinkProps,
+} from "../config";
 
 const footerLinks = [
   { label: "Услуги", href: "#services" },
@@ -7,14 +20,9 @@ const footerLinks = [
   { label: "Контакты", href: "#contacts" },
 ];
 
-function handlePrivacyClick(e: React.MouseEvent) {
-  e.preventDefault();
-  window.dispatchEvent(new CustomEvent("navigate", { detail: "privacy-policy" }));
-}
-
 export default function Footer() {
   return (
-    <footer className="bg-dark-900 text-white">
+    <footer className="bg-dark-900 text-white pb-20 lg:pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
@@ -29,7 +37,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-1 text-sm text-white/50">
               <span>Рейтинг</span>
-              <span className="text-gray-200">★★★★★</span>
+              <span className="text-gray-200" aria-label="5 из 5">★★★★★</span>
             </div>
           </div>
 
@@ -50,8 +58,7 @@ export default function Footer() {
               ))}
               <li>
                 <a
-                  href="/privacy-policy"
-                  onClick={handlePrivacyClick}
+                  href={PRIVACY_HASH}
                   className="text-sm text-white/50 hover:text-white transition-colors duration-300"
                 >
                   Политика конфиденциальности
@@ -67,43 +74,40 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://yandex.ru/maps/-/CPXuZIZp"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={MAPS_URL}
+                  {...externalLinkProps}
                   className="flex items-start gap-2 text-sm text-white/50 hover:text-white transition-colors duration-300"
                 >
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-gray-200" />
-                  <span>Краснодар, Ростовское шоссе, 30/7к1</span>
+                  <span>{ADDRESS}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+79181280865"
+                  href={PHONE_HREF}
                   className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-300"
                 >
                   <Phone className="w-4 h-4 shrink-0 text-gray-200" />
-                  <span>+7 (918) 128-08-65</span>
+                  <span>{PHONE_DISPLAY}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://t.me/classic_br"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={TELEGRAM_URL}
+                  {...externalLinkProps}
                   className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-300"
                 >
                   <Send className="w-4 h-4 shrink-0 text-gray-200" />
-                  <span>@classic_br</span>
+                  <span>{TELEGRAM_HANDLE}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://max.ru/u/f9LHodD0cOICiE22JFKFeGecTPGF0p8j0P2U_Z-X7HXCKy9aOQ7VX2xqlJQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={MAX_URL}
+                  {...externalLinkProps}
                   className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-300"
                 >
-                  <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" className="w-4 h-4 shrink-0" />
+                  <img src="https://maxicons.ru/icons/Max_logo.svg" alt="" loading="lazy" className="w-4 h-4 shrink-0" />
                   <span>Max</span>
                 </a>
               </li>
@@ -115,15 +119,17 @@ export default function Footer() {
               ЗАПИСЬ
             </h4>
             <a
-              target="_blank"
-              href="https://n1972733.yclients.com"
-              data-company-id="1972733"
-              className="yclients-wr-button inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-dark-900 bg-gray-200 hover:bg-white hover:text-dark-900 transition-all duration-300 group"
+              {...bookingLinkProps}
+              className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-dark-900 bg-gray-200 hover:bg-white hover:text-dark-900 transition-all duration-300 group"
             >
               <Calendar className="w-4 h-4" />
               <span>Записаться онлайн</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
+            <p className="flex items-center gap-2 mt-5 text-sm text-white/50">
+              <Clock className="w-4 h-4 text-gray-200" />
+              {HOURS}
+            </p>
           </div>
         </div>
 
@@ -131,8 +137,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Барбершоп «Классика». Все права защищены.</p>
           <div className="flex items-center gap-4">
             <a
-              href="/privacy-policy"
-              onClick={handlePrivacyClick}
+              href={PRIVACY_HASH}
               className="hover:text-white transition-colors"
             >
               Политика конфиденциальности

@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-20 sm:py-28 lg:py-36 bg-light">
+    <section id="about" className="relative overflow-x-clip py-20 sm:py-28 lg:py-36 bg-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div

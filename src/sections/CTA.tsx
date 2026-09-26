@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
+import { bookingLinkProps } from "../config";
 
 export default function CTA() {
   return (
@@ -25,10 +26,8 @@ export default function CTA() {
             барбершопа «Классика»
           </p>
           <a
-            target="_blank"
-            href="https://n1972733.yclients.com"
-            data-company-id="1972733"
-            className="yclients-wr-button group inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-dark-900 bg-white hover:bg-gray-200 transition-all duration-500"
+            {...bookingLinkProps}
+            className="group inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-dark-900 bg-white hover:bg-gray-200 transition-all duration-500"
           >
             <Calendar className="w-4 h-4" />
             <span>Записаться онлайн</span>
