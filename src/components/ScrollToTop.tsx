@@ -20,7 +20,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 w-11 h-11 bg-dark-900 text-white flex items-center justify-center hover:bg-dark-700 transition-colors duration-300 shadow-premium"
+          className="fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-40 w-11 h-11 bg-dark-900 text-white flex items-center justify-center hover:bg-dark-700 transition-colors duration-300 shadow-premium"
           aria-label="Наверх"
         >
           <ArrowUp className="w-4 h-4" />

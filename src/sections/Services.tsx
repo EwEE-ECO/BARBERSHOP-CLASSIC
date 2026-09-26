@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { bookingLinkProps } from "../config";
 import PriceCard from "../components/PriceCard";
 import { services } from "../data/services";
 
@@ -42,13 +43,28 @@ export default function Services() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 text-xs tracking-wider transition-all duration-300 ${
+              aria-pressed={activeCategory === cat.id}
+              className={`relative px-5 py-2 text-xs tracking-wider border transition-colors duration-300 ${
                 activeCategory === cat.id
-                  ? "bg-dark-900 text-white font-medium"
-                  : "text-dark-600 hover:text-dark-900 bg-light border border-dark-900/5 hover:border-dark-900/20"
+                  ? "text-white font-medium border-dark-900"
+                  : "text-dark-600 hover:text-dark-900 bg-light border-dark-900/5 hover:border-dark-900/20"
               }`}
             >
-              {cat.label}
+              {activeCategory === cat.id && (
+                <motion.span
+                  layoutId="services-tab"
+                  className="absolute inset-0 bg-dark-900"
+                  transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                />
+              )}
+              <span className="relative">
+                {cat.label}
+                <span className="ml-1.5 opacity-50">
+                  {cat.id === "all"
+                    ? services.length
+                    : services.filter((s) => s.category === cat.id).length}
+                </span>
+              </span>
             </button>
           ))}
         </div>
@@ -76,10 +92,8 @@ export default function Services() {
           className="text-center mt-12"
         >
           <a
-            target="_blank"
-            href="https://n1972733.yclients.com"
-            data-company-id="1972733"
-            className="yclients-wr-button inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-white bg-dark-900 hover:bg-dark-700 transition-all duration-500"
+            {...bookingLinkProps}
+            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-white bg-dark-900 hover:bg-dark-700 transition-all duration-500"
           >
             Записаться со скидкой 15%
           </a>

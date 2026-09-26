@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import type { Service } from "../data/services";
+import { bookingLinkProps } from "../config";
 
 interface PriceCardProps {
   service: Service;
@@ -31,10 +32,9 @@ export default function PriceCard({ service, index }: PriceCardProps) {
         </p>
 
         <a
-          target="_blank"
-          href="https://n1972733.yclients.com"
-          data-company-id="1972733"
-          className="yclients-wr-button inline-flex items-center gap-2 text-xs font-medium text-dark-700 hover:text-dark-900 transition-colors duration-300 group/link"
+          {...bookingLinkProps}
+          aria-label={`Записаться: ${service.title}`}
+          className="inline-flex items-center gap-2 text-xs font-medium text-dark-700 hover:text-dark-900 transition-colors duration-300 group/link"
         >
           <Calendar className="w-3.5 h-3.5" />
           <span>Записаться</span>

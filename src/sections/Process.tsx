@@ -71,10 +71,10 @@ export default function Process() {
 
         <div className="relative">
           <motion.div
-            className="hidden lg:block absolute top-1/2 left-[12.5%] right-[12.5%] h-[1px] -translate-y-1/2 origin-left"
+            className="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px origin-left"
             style={{ scaleX: lineScale }}
           >
-            <div className="w-full h-full bg-gradient-to-r from-dark-900/0 via-dark-900/20 to-dark-900/0" />
+            <div className="w-full h-full bg-gradient-to-r from-dark-900/10 via-dark-900/40 to-dark-900/10" />
           </motion.div>
 
           <motion.div
@@ -93,7 +93,7 @@ export default function Process() {
                   className="relative flex flex-col items-center text-center group"
                 >
                   <motion.div
-                    className="relative mb-6"
+                    className="relative z-10 mb-6 rounded-full ring-8 ring-white"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
                   >

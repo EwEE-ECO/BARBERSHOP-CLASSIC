@@ -50,3 +50,6 @@ export const reviews: Review[] = [
     date: "2026-04-18",
   },
 ];
+
+export const averageRating =
+  reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
